@@ -472,7 +472,9 @@
   flex-direction: column;
   max-width: 88%;
   opacity: 0;
-  animation: msgIn 0.4s ease forwards;
+}
+#demoChat.playing .msg {
+  animation: msgIn 0.5s ease both;
 }
 .msg.user { align-self: flex-end; align-items: flex-end; }
 .msg.claude { align-self: flex-start; align-items: flex-start; }
@@ -536,13 +538,22 @@
 </style>
 <script>
 function replayDemo() {
-  const msgs = document.querySelectorAll('#demoChat .msg');
-  msgs.forEach(msg => {
-    msg.style.animation = 'none';
-    void msg.offsetWidth;
-    msg.style.animation = '';
-  });
+  const chat = document.getElementById('demoChat');
+  chat.classList.remove('playing');
+  void chat.offsetWidth;
+  chat.classList.add('playing');
 }
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      replayDemo();
+      observer.disconnect();
+    }
+  });
+}, { threshold: 0.2 });
+
+observer.observe(document.getElementById('demoWindow'));
 </script>
 
 <!-- Prerequisites -->
