@@ -1,0 +1,17 @@
+# API 키 설정 파일
+# 이 파일을 복사하여 .api-keys 로 이름 변경 후 실제 키를 입력하세요.
+# .api-keys 파일은 절대 GitHub에 올리지 마세요!
+
+# [필수] Google AI Studio에서 발급
+# https://aistudio.google.com/apikey
+GEMINI_API_KEY=여기에_Gemini_API_키_입력
+
+# [선택] 한국어 논문 검색용 Naver 개발자 API
+# https://developers.naver.com/apps/#/register
+# 애플리케이션 등록 → 학술정보 검색 API 선택
+NAVER_CLIENT_ID=여기에_Naver_클라이언트_ID_입력
+NAVER_CLIENT_SECRET=여기에_Naver_클라이언트_시크릿_입력
+
+# [선택] Semantic Scholar API 키 (없어도 동작, 있으면 rate limit 완화)
+# https://www.semanticscholar.org/product/api
+S2_API_KEY=

@@ -1,0 +1,29 @@
+# API 키 - 절대 커밋하지 마세요
+vault-template/99-meta/.api-keys
+**/.api-keys
+
+# 개인 노트 (vault 내용물)
+vault-template/01-inbox/*.md
+vault-template/02-daily-notes/**
+vault-template/03-projects/**/*.md
+vault-template/04-areas/**/*.md
+vault-template/05-resources/papers/*.md
+vault-template/06-archives/**/*.md
+
+# 논문 수집 이력
+vault-template/99-meta/paper-seen.txt
+
+# PDF 파일
+vault-template/99-meta/inbox-pdfs/*.pdf
+vault-template/99-meta/inbox-pdfs/processed/
+vault-template/99-meta/pdfs/
+
+# Python 캐시
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# OS
+.DS_Store
+Thumbs.db
