@@ -345,6 +345,206 @@
   </div>
 </section>
 
+<!-- Demo Animation -->
+<section>
+  <div class="container">
+    <div class="section-label">Demo</div>
+    <h2>실제로 이렇게 작동해요</h2>
+    <p class="section-desc">매일 세션 시작 시 Claude와 나누는 대화 흐름입니다.</p>
+
+    <div class="demo-window" id="demoWindow">
+      <div class="demo-titlebar">
+        <div class="demo-dots"><span></span><span></span><span></span></div>
+        <div class="demo-title">Claude Code — Obsidian Vault</div>
+      </div>
+      <div class="demo-chat" id="demoChat">
+
+        <div class="msg user" style="animation-delay:0.5s">
+          <div class="msg-label">나</div>
+          <div class="msg-bubble">안녕! 오늘 세션 시작할게.</div>
+        </div>
+
+        <div class="msg claude" style="animation-delay:1.8s">
+          <div class="msg-label">Claude</div>
+          <div class="msg-bubble">
+            논문 파이프라인을 시작합니다 🔍<br>
+            <span class="script-line">▶ pdf-watcher.py 실행 중...</span><br>
+            <span class="script-line">  inbox-pdfs/ — 새 PDF 없음</span><br>
+            <span class="script-line">▶ fetch-papers.py 실행 중...</span><br>
+            <span class="script-line">  Semantic Scholar 검색: machine learning, HCI ...</span>
+          </div>
+        </div>
+
+        <div class="msg claude" style="animation-delay:4.2s">
+          <div class="msg-label">Claude</div>
+          <div class="msg-bubble">
+            📥 논문 3편 수집 · Gemini 분석 완료<br><br>
+            <table class="triage-table">
+              <thead>
+                <tr><th>#</th><th>제목</th><th>관련도</th><th>분석</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>LLMs in Education: A Review</td><td>상 ⭐</td><td>전문</td></tr>
+                <tr><td>2</td><td>Embodied Cognition and AI</td><td>중</td><td>전문</td></tr>
+                <tr><td>3</td><td>CT in K-12 Classrooms</td><td>상 ⭐</td><td>초록</td></tr>
+              </tbody>
+            </table>
+            <br>전문 분석 논문 2편 있어요. 읽을 것만 골라주세요 <span style="color:var(--accent2)">(번호 / 전부 / 없음)</span>
+          </div>
+        </div>
+
+        <div class="msg user" style="animation-delay:7s">
+          <div class="msg-label">나</div>
+          <div class="msg-bubble">1, 2</div>
+        </div>
+
+        <div class="msg claude" style="animation-delay:8.2s">
+          <div class="msg-label">Claude</div>
+          <div class="msg-bubble">
+            📖 <strong>LLMs in Education</strong> Deep-dive 시작...<br><br>
+            연구 방법, 핵심 결과, 한계점, 내 연구와의 연결성을 분석했어요.<br>
+            특히 <em>AI 튜터링 시스템의 개인화 학습</em> 부분이 HCI 연구와 직접 연결됩니다.<br><br>
+            이 논문 어디로 정리할까요?<br>
+            <span style="color:var(--text-muted)">• 프로젝트 직접 활용 → 03-projects/</span><br>
+            <span style="color:var(--text-muted)">• 연구 영역 참고 → 04-areas/</span><br>
+            <span style="color:var(--text-muted)">• 일단 보관 → 05-resources/papers/</span>
+          </div>
+        </div>
+
+        <div class="msg user" style="animation-delay:11s">
+          <div class="msg-label">나</div>
+          <div class="msg-bubble">04-areas에 넣어줘</div>
+        </div>
+
+        <div class="msg claude" style="animation-delay:12s">
+          <div class="msg-label">Claude</div>
+          <div class="msg-bubble">
+            ✅ <strong>04-areas/ai-education/</strong> 로 이동 완료!<br>
+            MOC.md에 링크도 추가했어요.<br><br>
+            전문 미접근 논문 1편이 있어요. PDF를 <code>99-meta/inbox-pdfs/</code>에 넣으면 다음 세션에서 자동 분석합니다.<br>
+            <span style="color:var(--text-muted);font-size:12px">3. CT in K-12 Classrooms</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="demo-footer">
+        <button class="demo-replay" onclick="replayDemo()">↺ 다시 보기</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.demo-window {
+  background: #0d1117;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 680px;
+  margin: 0 auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.demo-titlebar {
+  background: var(--surface2);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.demo-dots { display: flex; gap: 7px; }
+.demo-dots span {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+}
+.demo-dots span:nth-child(1) { background: #ff5f57; }
+.demo-dots span:nth-child(2) { background: #febc2e; }
+.demo-dots span:nth-child(3) { background: #28c840; }
+.demo-title { font-size: 13px; color: var(--text-muted); flex: 1; text-align: center; }
+.demo-chat {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.msg {
+  display: flex;
+  flex-direction: column;
+  max-width: 88%;
+  opacity: 0;
+  animation: msgIn 0.4s ease forwards;
+}
+.msg.user { align-self: flex-end; align-items: flex-end; }
+.msg.claude { align-self: flex-start; align-items: flex-start; }
+.msg-label { font-size: 11px; color: var(--text-muted); margin-bottom: 5px; padding: 0 4px; }
+.msg-bubble {
+  padding: 11px 15px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.msg.user .msg-bubble {
+  background: var(--accent);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+.msg.claude .msg-bubble {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-bottom-left-radius: 4px;
+}
+.script-line {
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  color: var(--accent2);
+  display: block;
+  margin-top: 2px;
+}
+.triage-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 4px; }
+.triage-table th {
+  background: rgba(124,111,247,0.15);
+  padding: 6px 8px;
+  text-align: left;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.triage-table td { padding: 7px 8px; border-bottom: 1px solid var(--border); }
+.triage-table tr:last-child td { border-bottom: none; }
+.demo-footer {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+.demo-replay {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 6px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.15s;
+}
+.demo-replay:hover { border-color: var(--accent); color: var(--accent); }
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+<script>
+function replayDemo() {
+  const msgs = document.querySelectorAll('#demoChat .msg');
+  msgs.forEach(msg => {
+    msg.style.animation = 'none';
+    void msg.offsetWidth;
+    msg.style.animation = '';
+  });
+}
+</script>
+
 <!-- Prerequisites -->
 <section>
   <div class="container">
