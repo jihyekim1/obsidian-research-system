@@ -401,26 +401,39 @@
         <div class="msg claude" style="animation-delay:8.2s">
           <div class="msg-label">Claude</div>
           <div class="msg-bubble">
-            📖 <strong>LLMs in Education</strong> Deep-dive 시작...<br><br>
-            연구 방법, 핵심 결과, 한계점, 내 연구와의 연결성을 분석했어요.<br>
-            특히 <em>AI 튜터링 시스템의 개인화 학습</em> 부분이 HCI 연구와 직접 연결됩니다.<br><br>
-            이 논문 어디로 정리할까요?<br>
+            📖 <strong>1. LLMs in Education: A Review</strong> — Deep-dive<br><br>
+            <div class="dive-section">
+              <div class="dive-label">🔬 연구 방법</div>
+              2019–2023년 발행된 논문 87편을 대상으로 체계적 문헌 검토(SLR). GPT 계열 LLM을 활용한 교육 개입 사례를 분류·분석.
+            </div>
+            <div class="dive-section">
+              <div class="dive-label">📊 핵심 결과</div>
+              LLM 기반 튜터링이 전통 방식 대비 학습 효율 23% 향상. 단, 고차원적 사고력 평가에는 한계 존재.
+            </div>
+            <div class="dive-section">
+              <div class="dive-label">⚠️ 한계점</div>
+              대부분 단기 실험(4주 미만), 장기 효과 불명확. 영어권 중심으로 다국어 적용 연구 부족.
+            </div>
+            <div class="dive-section">
+              <div class="dive-label">🔗 내 연구와의 연결성</div>
+              AI education 관점에서 LLM의 교육적 효과를 실증한 연구. 특히 개인화 피드백 메커니즘이 computational thinking 교육 설계에 직접 참고 가능.
+            </div>
+            <br>이 논문 어디로 정리할까요?<br>
             <span style="color:var(--text-muted)">• 프로젝트 직접 활용 → 03-projects/</span><br>
             <span style="color:var(--text-muted)">• 연구 영역 참고 → 04-areas/</span><br>
             <span style="color:var(--text-muted)">• 일단 보관 → 05-resources/papers/</span>
           </div>
         </div>
 
-        <div class="msg user" style="animation-delay:11s">
+        <div class="msg user" style="animation-delay:13s">
           <div class="msg-label">나</div>
           <div class="msg-bubble">04-areas에 넣어줘</div>
         </div>
 
-        <div class="msg claude" style="animation-delay:12s">
+        <div class="msg claude" style="animation-delay:14.2s">
           <div class="msg-label">Claude</div>
           <div class="msg-bubble">
-            ✅ <strong>04-areas/ai-education/</strong> 로 이동 완료!<br>
-            MOC.md에 링크도 추가했어요.<br><br>
+            ✅ <strong>04-areas/ai-education/</strong> 로 이동 완료! MOC.md에 링크 추가했어요.<br><br>
             전문 미접근 논문 1편이 있어요. PDF를 <code>99-meta/inbox-pdfs/</code>에 넣으면 다음 세션에서 자동 분석합니다.<br>
             <span style="color:var(--text-muted);font-size:12px">3. CT in K-12 Classrooms</span>
           </div>
@@ -514,6 +527,22 @@
 }
 .triage-table td { padding: 7px 8px; border-bottom: 1px solid var(--border); }
 .triage-table tr:last-child td { border-bottom: none; }
+.dive-section {
+  background: rgba(124,111,247,0.07);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 8px 10px;
+  margin: 6px 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.dive-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+  letter-spacing: 0.3px;
+}
 .demo-footer {
   padding: 12px 20px;
   border-top: 1px solid var(--border);
